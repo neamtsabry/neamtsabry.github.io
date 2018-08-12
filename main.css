@@ -20,6 +20,10 @@ body {
     radial-gradient(salmon 20%, transparent 0);
 	background-size: 30px 30px;
 	background-position: 0 0, 15px 15px;
+	animation-name: backgroundmovement;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 }
 
 .centerpiece{
