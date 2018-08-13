@@ -179,3 +179,15 @@ footer {
    background-position: 60px 60px, 120px 120px;
   }
    }
+#gear {
+    position: relative;
+
+    animation: move 6s linear infinite;
+    animation-play-state: running;
+}
+
+@keyframes move {
+    100% {
+        transform: rotate(360deg);
+    }
+}
