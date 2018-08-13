@@ -66,6 +66,18 @@
 
           };
        })();
+      (function() {
+        var gear = document.getElementById('gear');
+
+        gear.onclick= function(){
+          if (gear.style.animationPlayState == "paused"){
+            gear.style.animationPlayState = "running"
+          }
+          else{
+            gear.style.animationPlayState = "paused"
+          }
+        };
+      });   
     </script>
   </body>
 </html>
