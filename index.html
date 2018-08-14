@@ -42,7 +42,7 @@
         <button class="btn"><i class="fa fa-user-o"></i></button>
         <button class="btn"><i class="fa fa-file-text-o"></i></button>
         <button class="btn"><i class="fa fa-envelope-o"></i></button>
-        
+        <button class="btn" id="bot"><i class="fa fa-pause"></i></button>
       </div>
     </section>
     
@@ -53,8 +53,8 @@
     <script type="text/javascript">
       (function () {
           var x = document.getElementsByTagName("BODY")[0];
-    
-          x.onclick = function () {
+          var bot = document.getElementById("bot");
+          bot.onclick = function () {
 
               if (x.style.animationPlayState === "paused") {
                   x.style.animationPlayState = "running";
