@@ -86,6 +86,7 @@ footer {
   padding: 5px 15px;
   border: solid black 1px;
   cursor: pointer;
+  outline: none !important;
 }
 
 .btn:hover {
