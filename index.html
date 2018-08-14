@@ -51,11 +51,16 @@
     </footer>
 
     <script type="text/javascript">
+      //Changing icons by toggling classes
+      $('#bot').click(function() {
+          $(this).find('i').toggleClass('fa-pause fa-play')
+      });
+      
+      //pauses background animation
       (function () {
           var x = document.getElementsByTagName("BODY")[0];
           var bot = document.getElementById("bot");
           bot.onclick = function () {
-              $(this).find('i').toggleClass('fa-play fa-pause')
               if (x.style.animationPlayState === "paused") {
                   x.style.animationPlayState = "running";
                 //box.style.animationPlayState = "running";
@@ -67,7 +72,7 @@
 
           };
        })();
-      (function() {
+      /*(function() {
           var gear = document.getElementById('gear');
 
           gear.onclick= function(){
@@ -78,7 +83,7 @@
               else{
                   gear.style.animationPlayState = "paused";
               }
-        };
+        };*/
       });   
     </script>
   </body>
