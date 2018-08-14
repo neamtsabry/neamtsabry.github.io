@@ -42,7 +42,7 @@
         <button class="btn"><i class="fa fa-user-o"></i></button>
         <button class="btn"><i class="fa fa-file-text-o"></i></button>
         <button class="btn"><i class="fa fa-envelope-o"></i></button>
-        <button class="btn" id="bot"><i class="fa fa-pause"></i></button>
+        <a href="javascript:void(0)" rel="me"><button class="btn" id="bot"><i class="fa fa-pause"></i></button></a>
       </div>
     </section>
     
@@ -55,7 +55,7 @@
           var x = document.getElementsByTagName("BODY")[0];
           var bot = document.getElementById("bot");
           bot.onclick = function () {
-
+              $(this).find('i').toggleClass('fa-play fa-pause')
               if (x.style.animationPlayState === "paused") {
                   x.style.animationPlayState = "running";
                 //box.style.animationPlayState = "running";
