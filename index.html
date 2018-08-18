@@ -45,7 +45,7 @@
         <button class="btn"><i class="fa fa-user-o"></i></button>
         <button class="btn"><i class="fa fa-file-text-o"></i></button>
         <button class="btn"><i class="fa fa-envelope-o"></i></button>
-        <button class="btn"><i class="fa fa-pause"></i></button>
+        <button class="btn" id="bot"><i class="fa fa-pause"></i></button>
       </div>
     </section>
     
@@ -53,6 +53,40 @@
     <footer>
     </footer>
     
-    <script src="script.js"></script>
+    <script>
+      //Changing icons by toggling classes
+      /*$('#bot').click(function() {
+          $(this).find('i').toggleClass('fa-pause fa-play')
+      });*/
+
+      //pauses background animation
+      (function () {
+          var x = document.getElementsByTagName("BODY")[0];
+          var bot = document.getElementById("bot");
+          bot.onclick = function () {
+              if (x.style.animationPlayState === "paused") {
+                  x.style.animationPlayState = "running";
+                //box.style.animationPlayState = "running";
+
+              } else {
+                  x.style.animationPlayState = "paused";
+                //box.style.animationPlayState = "paused"
+              }
+
+          };
+       })();
+      /*(function() {
+          var gear = document.getElementById('gear');
+          gear.onclick= function(){
+              if (gear.style.animationPlayState == "paused"){
+                  gear.style.animationPlayState = "running";
+              }
+              else{
+                  gear.style.animationPlayState = "paused";
+              }
+        };
+      });*/  
+      </script>
+
   </body>
 </html>
