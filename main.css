@@ -84,15 +84,14 @@ footer {
   border: none;
   outline: none;
   padding: 5px 15px;
-  border: solid black 1px;
   cursor: pointer;
   outline: none !important;
 }
 
 .btn:hover {
-  background-color: grey;
-  border: solid 1px;
-  color: white;
+  /*background-color: grey;
+  border: solid 1px;*/
+  color: salmon;
 }
 
 .btn.active {
@@ -101,7 +100,7 @@ footer {
   color: white;
 }
 .buttons {
-   padding-top:10px;
+   padding-top:15px;
 }
 
 #gear {
