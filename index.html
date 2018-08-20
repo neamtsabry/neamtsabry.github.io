@@ -50,7 +50,7 @@
         <button class="btn" id="res"><i class="fa fa-file-text-o fa-2x"></i></button>
         <button class="btn"><i class="fa fa-envelope-o fa-2x"></i></button>
         <button class="btn" id="bot"><i class="fa fa-pause fa-2x"></i></button>
-        <div>
+        <div id="div">
           <object data="neamatSabry.pdf" type="application/pdf" width="100%" height="100%">
             <p><a href="neamatSabry.pdf"></p>
           </object>
@@ -84,7 +84,7 @@
 
           };
           $('#res').click(function(e){
-              $('how').toggle();
+              $('#div').toggle();
               $('.centerpiece').toggleClass('longScreen');
           });
        });
