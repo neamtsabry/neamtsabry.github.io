@@ -51,7 +51,7 @@ body {
 	padding-left: initial;
 	margin-top: 5px;
 }
-.centerpiece.longScreen{
+#div.longScreen{
 	z-index: 9999; 
 	width: 700px; 
 	height: 100vh; 
