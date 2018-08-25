@@ -60,7 +60,7 @@
           var x = document.getElementsByTagName("BODY")[0];
           var bot = document.getElementById("bot");
           var res = document.getElementById("res");
-          var div = document.getElementById("div");
+          //var div = document.getElementById("div");
           var center = document.getElementById("center");
           bot.onclick = function () {
               if (x.style.animationPlayState === "paused") {
@@ -75,7 +75,7 @@
           };
           res.onclick = function () {
               //show or hide the resume when button is clicked
-              div.toggle();
+              $('#div').toggle();
               
              //toggle between a different height screens
              center.toggleClass('longScreen');
