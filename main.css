@@ -53,8 +53,8 @@ body {
 }
 #div.longScreen{
 	z-index: 9999; 
-	width: 700px; 
-	height: 100vh; 
+	width: 750px; 
+	height: 150vh; 
 }
 /** Text **/
 h2 {
