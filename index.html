@@ -28,7 +28,7 @@
   </head>
   <body>
     <section id="mainpage">
-      <div class="centerpiece" id="center">
+      <div class="centerpiece">
         <img src="me.jpg" alt="Picture of Neamat.">
         <h2>Neamat Sabry</h2>
         
@@ -64,7 +64,7 @@
           var bot = document.getElementById("bot");
           var res = document.getElementById("res");
           //var div = document.getElementById("div");
-          var center = document.getElementById("center");
+          //var center = document.getElementById("center");
           bot.onclick = function () {
               if (x.style.animationPlayState === "paused") {
                   x.style.animationPlayState = "running";
@@ -80,8 +80,8 @@
               //show or hide the resume when button is clicked
               $('#div').toggle();
               
-             //toggle between a different height screens
-             center.toggleClass('longScreen');
+              //toggle between different height screens
+              $('.centerpiece').toggleClass('longScreen');
           };
       }());
       
