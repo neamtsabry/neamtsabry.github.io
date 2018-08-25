@@ -94,11 +94,11 @@ footer {
   color: salmon;
 }
 
-.btn:active {
+/*.btn:active {
   background-color: grey;
   border: solid black 1px;
   color: white;
-}
+}*/
 .buttons {
    padding-top:15px;
 }
