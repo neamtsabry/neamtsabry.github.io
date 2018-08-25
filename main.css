@@ -51,10 +51,11 @@ body {
 	padding-left: initial;
 	margin-top: 5px;
 }
-#div.longScreen{
+#div{
+	display: inline-block;
 	z-index: 9999; 
 	width: 750px; 
-	height: 150vh; 
+	height: 90vh; 
 }
 /** Text **/
 h2 {
@@ -93,24 +94,11 @@ footer {
   color: salmon;
 }
 
-.btn.active {
+.btn:active {
   background-color: grey;
   border: solid black 1px;
   color: white;
 }
 .buttons {
    padding-top:15px;
-}
-
-#gear {
-    position: relative;
-
-    animation: move 6s linear infinite;
-    animation-play-state: running;
-}
-
-@keyframes move {
-    100% {
-        transform: rotate(360deg);
-    }
 }
