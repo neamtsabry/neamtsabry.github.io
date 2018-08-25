@@ -32,7 +32,7 @@ body {
    100% {
    	background-position: 60px 60px, 120px 120px;
   	}
-   }
+}
 .centerpiece{
 	background: white;
 	box-shadow: 5px 5px 5px lemonchiffon;
@@ -46,10 +46,15 @@ body {
 .centerpiece h2{
 	padding-top:1.25%;
 }
+.centerpiece ul{
+	display: inline-block;
+	padding-left: initial;
+	margin-top: 5px;
+}
 .centerpiece.longScreen{
-    z-index: 9999; 
-    width: 700px; 
-    height: 100vh; 
+	z-index: 9999; 
+	width: 700px; 
+	height: 100vh; 
 }
 /** Text **/
 h2 {
