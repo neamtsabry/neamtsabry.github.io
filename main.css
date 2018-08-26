@@ -51,6 +51,10 @@ body {
 	padding-left: initial;
 	margin-top: 5px;
 }
+.centerpiece.longScreen{
+	width: 750px;
+	height:100vh;
+}
 #div{
 	display: inline-block;
 	z-index: 9999; 
@@ -93,7 +97,9 @@ footer {
   border: solid 1px;*/
   color: salmon;
 }
-
+button.selected {
+  color:salmon;
+}
 /*.btn:active {
   background-color: grey;
   border: solid black 1px;
