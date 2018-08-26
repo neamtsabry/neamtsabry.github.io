@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	font-family: 'Cabin', 'Calibri', Helvetica, Arial, sans-serif;
+	font-family: 'Abril Fatface', 'Calibri', sans-serif;
 	font-size: 15px;
 	line-height: 25px;
 	padding: 0;
@@ -53,7 +53,7 @@ body {
 }
 .centerpiece.longScreen{
 	width: 750px;
-	height:100vh;
+	height:135vh;
 }
 #div{
 	display: inline-block;
