@@ -82,7 +82,10 @@
               $('#div').toggle();
               
               //toggle between different height screens
-              //$('#div').toggleClass('longScreen');
+              $('.centerpiece').toggleClass('longScreen');
+            
+              $('button').removeClass('selected');
+              $(this).addClass('selected');
           };
       }());
       
