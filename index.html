@@ -67,6 +67,8 @@
           //var div = document.getElementById("div");
           //var center = document.getElementById("center");
           bot.onclick = function () {
+              $(this).toggleClass('selected');
+            
               if (x.style.animationPlayState === "paused") {
                   x.style.animationPlayState = "running";
                 //box.style.animationPlayState = "running";
