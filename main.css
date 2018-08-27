@@ -53,14 +53,14 @@ body {
 }
 .centerpiece.longScreen{
 	width: 750px;
-	height:135vh;
+	height:145vh;
 }
 #div{
 	display: inline-block;
 	z-index: 9999; 
 	width: 750px; 
 	height: 90vh; 
-	animation: fadeEffect 1s;
+	animation: fadeEffect 0.5s;
 }
 @keyframes fadeEffect{
 	from {opacity: 0;}
