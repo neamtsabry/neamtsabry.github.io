@@ -42,6 +42,26 @@
             <button class="btn" id="bot"><i class="fa fa-pause fa-2x"></i></button>
         </ul>
         
+        <script>
+            var today = new Date();
+            var hours = today.getHours();
+            var greeting;
+
+            if hours > 18 {
+                greeting = "Good Evening!";
+            }
+            else if hours > 12 {
+                greeting = "Good Afternoon!";
+            }
+            else if hours > 0 {
+                greeting = "Good Morning!";
+            }
+            else {
+                greeting = "";
+            }
+            document.write( "<h3>" + greeting + "</h3>" );
+        </script>
+        
         <!--div starts off as hidden using the css visibility property-->
         <div id="div" style="display:none;">
           <!--<h3>Check out my resume below!</h3>-->
