@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	font-family: 'Abril Fatface', 'Calibri', sans-serif;
+	font-family: 'Josefin Sans', 'Calibri', sans-serif;
 	font-size: 15px;
 	line-height: 25px;
 	padding: 0;
@@ -60,7 +60,13 @@ body {
 	z-index: 9999; 
 	width: 750px; 
 	height: 90vh; 
+	animation: fadeEffect 1s;
 }
+@keyframes fadeEffect{
+	from {opacity: 0;}
+        to {opacity: 1;}
+}
+
 /** Text **/
 h2 {
 	font-size: 40px;
@@ -69,6 +75,13 @@ h2 {
 	line-height: 40px;
 	font-family: 'Abril Fatface', serif;
 }
+h3 {
+	padding-right:300px;
+	margin-bottom:10px;
+	margin-top:15px;
+	font-size:30px;
+}
+
 /** Footer **/
 footer {
 	background: #5bc0de;
