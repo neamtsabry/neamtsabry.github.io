@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <!--Title-->
+    <title>Neamat Sabry</title>
+    
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="main.css">
+    
+    <!--Google fonts!-->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+    
+    <!--FontAwesome icons-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <section id="mainpage">
+      <div class="centerpiece">
+        
+        <img src="me.jpg" alt="Picture of Neamat.">
+        <h2>Neamat Sabry</h2>
+    
+        <ul>
+            <button class="btn"><i class="fa fa-user-o fa-2x"></i></button>
+            <button class="btn" id="res"><i class="fa fa-file-text-o fa-2x"></i></button>
+            <a href="mailto:nsabry@smith.edu"><button class="btn"><i class="fa fa-envelope-o fa-2x"></i></button></a>
+            <button class="btn" id="bot"><i class="fa fa-pause fa-2x"></i></button>
+        </ul>
+        
+        <script>
+            var today = new Date();
+            var hours = today.getHours();
+            var greeting;
+
+            if (hours > 18) {
+                greeting = "Good evening!";
+            }
+            else if (hours > 12) {
+                greeting = "Good afternoon!";
+            }
+            else if (hours > 0) {
+                greeting = "Good morning!";
+            }
+            else {
+                greeting = "";
+            }
+            document.write( "<h3>" + greeting + " Welcome to my website." + "</h3>" );
+        </script>
+        <h3>Feel free to click all the buttons! </h3>
+        <!--div starts off as hidden using the css visibility property-->
+        <div id="div" style="display:none;">
+          <!--<h3>Check out my 
+
+
+
+
+below!</h3>-->
+          <object data="3_52Resume.pdf" type="application/pdf" width="700px" height="600px">
+            <p><a href="3_52Resume.pdf"></p>
+          </object>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+    </footer>
+    
+    <script>
+      //Changing icons by toggling classes
+      /*$('#bot').click(function() {
+          $(this).find('i').toggleClass('fa-pause fa-play')
+      });*/
+
+      //pauses background animation
+      (function () {
+          var x = document.getElementsByTagName("BODY")[0];
+          var bot = document.getElementById("bot");
+          var res = document.getElementById("res");
+          //var div = document.getElementById("div");
+          //var center = document.getElementById("center");
+          bot.onclick = function () {
+              $(this).toggleClass('selected');
+            
+              if (x.style.animationPlayState === "paused") {
+                  x.style.animationPlayState = "running";
+                //box.style.animationPlayState = "running";
+
+              } else {
+                  x.style.animationPlayState = "paused";
+                //box.style.animationPlayState = "paused"
+              }
+
+          };
+          res.onclick = function () {
+              //show or hide the resume/greeting when button is clicked
+              $('#div').toggle();
+              //$('h3').toggle();
+              $('h3').slideToggle();
+              
+              //toggle between different height screens
+              $('.centerpiece').toggleClass('longScreen');
+              $('#mainpage').toggleClass('long');
+            
+              //$('button').removeClass('selected');
+              $(this).toggleClass('selected');
+          };
+      }());
+      
+      </script>
+
+  </body>
+</html>
