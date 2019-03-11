@@ -10,12 +10,14 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(1200, 800);
     mic = new p5.AudioIn();
     mic.start();
 }
 
 function draw() {
+    bzckground(0);
+    
     var vol = mic.getLevel();
     console.log(vol);
     
