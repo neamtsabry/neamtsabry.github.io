@@ -1,10 +1,4 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/q2IDNkUws-A
-
-// var mic;
-
+var mic;
 var bgImg;
 var x1 = 0;
 var x2;
@@ -16,23 +10,26 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(800, 800);
     mic = new p5.AudioIn();
-    //   mic.start();
+    mic.start();
 }
 
 function draw() {
-    image(bgImg, x1, 0, width, height);
-    image(bgImg, x2, 0, width, height);
+    var vol = mic.getLevel();
+    console.log(vol);
+    
+    image(bgImg, 0, y1, width, height);
+    image(bgImg, 0, y2, width, height);
+    
+    y1 -= vol * 20;
+    y2 -= vol * 20;
 
-    x1 -= scrolLSpeed;
-    x2 -= scrolLSpeed;
-
-    if(x1 < -width){
-        x1 = width
+    if(y1 < -width){
+        y1 = width
     }
-    if(x2 < -width){
-        x2 = width;
+    if(y2 < -width){
+        y2 = width;
     }
     //   background(0);
     //   var vol = mic.getLevel();
