@@ -6,7 +6,7 @@ var y2 = 0;
 var scrolLSpeed = 2;
 
 function preload() {
-    bgImg = loadImage("wa1.png");
+    bgImg = loadImage("Images/waltz.png");
 }
 
 function setup() {
