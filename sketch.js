@@ -1,7 +1,7 @@
 var mic;
 var bgImg;
-var x1 = 0;
-var x2;
+var y1 = 0;
+var y2 = 0;
 
 var scrolLSpeed = 2;
 
