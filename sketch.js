@@ -35,3 +35,12 @@ function draw() {
     //   var vol = mic.getLevel();
     //   ellipse(100, 100, 200, vol * 200);
 }
+
+function keyPressed() {
+    if (keyCode === UP_ARROW) {
+      y1--;
+      y2--;
+    } else if (keyCode === DOWN_ARROW) {
+      y1++;
+    }
+  }
