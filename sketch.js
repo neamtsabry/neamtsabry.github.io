@@ -10,7 +10,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1200, 800);
+    createCanvas(600, 1200);
     mic = new p5.AudioIn();
     mic.start();
 }
