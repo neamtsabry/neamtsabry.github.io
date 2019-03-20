@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,43 +36,15 @@
     
         <ul>
             <button class="btn"><i class="fa fa-user-o fa-2x"></i></button>
-            <button class="btn" id="res"><i class="fa fa-file-text-o fa-2x"></i></button>
+            <a href="3_52Resume.pdf"><button class="btn" id="res"><i class="fa fa-file-text-o fa-2x"></i></button></a>
             <a href="mailto:nsabry@smith.edu"><button class="btn"><i class="fa fa-envelope-o fa-2x"></i></button></a>
-            <button class="btn" id="bot"><i class="fa fa-pause fa-2x"></i></button>
+            <button class="btn" id="bot"><i class="fa fa-play fa-2x"></i></button>
         </ul>
-        
-        <script>
-            var today = new Date();
-            var hours = today.getHours();
-            var greeting;
 
-            if (hours > 18) {
-                greeting = "Good evening!";
-            }
-            else if (hours > 12) {
-                greeting = "Good afternoon!";
-            }
-            else if (hours > 0) {
-                greeting = "Good morning!";
-            }
-            else {
-                greeting = "";
-            }
-            document.write( "<h3>" + greeting + " Welcome to my website." + "</h3>" );
-        </script>
+        <h3 id="greeting"></h3>
         <h3>Feel free to click all the buttons! </h3>
-        <!--div starts off as hidden using the css visibility property-->
-        <div id="div" style="display:none;">
-          <!--<h3>Check out my 
 
-
-
-
-below!</h3>-->
-          <object data="3_52Resume.pdf" type="application/pdf" width="700px" height="600px">
-            <p><a href="3_52Resume.pdf"></p>
-          </object>
-        </div>
+        <script src = "script.js"></script>
       </div>
     </section>
     
@@ -81,48 +52,5 @@ below!</h3>-->
     <footer>
     </footer>
     
-    <script>
-      //Changing icons by toggling classes
-      /*$('#bot').click(function() {
-          $(this).find('i').toggleClass('fa-pause fa-play')
-      });*/
-
-      //pauses background animation
-      (function () {
-          var x = document.getElementsByTagName("BODY")[0];
-          var bot = document.getElementById("bot");
-          var res = document.getElementById("res");
-          //var div = document.getElementById("div");
-          //var center = document.getElementById("center");
-          bot.onclick = function () {
-              $(this).toggleClass('selected');
-            
-              if (x.style.animationPlayState === "paused") {
-                  x.style.animationPlayState = "running";
-                //box.style.animationPlayState = "running";
-
-              } else {
-                  x.style.animationPlayState = "paused";
-                //box.style.animationPlayState = "paused"
-              }
-
-          };
-          res.onclick = function () {
-              //show or hide the resume/greeting when button is clicked
-              $('#div').toggle();
-              //$('h3').toggle();
-              $('h3').slideToggle();
-              
-              //toggle between different height screens
-              $('.centerpiece').toggleClass('longScreen');
-              $('#mainpage').toggleClass('long');
-            
-              //$('button').removeClass('selected');
-              $(this).toggleClass('selected');
-          };
-      }());
-      
-      </script>
-
   </body>
 </html>
