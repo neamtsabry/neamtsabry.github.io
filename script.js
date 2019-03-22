@@ -2,17 +2,17 @@ var today = new Date();
 var hours = today.getHours();
 var greeting = document.getElementById("greeting");
 
-var text = " Welcome to my website."
+// var text = " Welcome to my website."
 
-if (hours > 18) {
-    greeting.innerHTML = "Good evening!" + text;
-} else if (hours > 12) {
-    greeting.innerHTML = "Good afternoon!" + text;
-} else if (hours > 0) {
-    greeting.innerHTML = "Good morning!" + text;
-} else {
-    greeting.innerHTML = "";
-}
+// if (hours > 18) {
+//     greeting.innerHTML = "Good evening!" + text;
+// } else if (hours > 12) {
+//     greeting.innerHTML = "Good afternoon!" + text;
+// } else if (hours > 0) {
+//     greeting.innerHTML = "Good morning!" + text;
+// } else {
+//     greeting.innerHTML = "";
+// }
 
 var x = document.getElementsByTagName("BODY")[0];
 x.style.animationPlayState = "paused";
