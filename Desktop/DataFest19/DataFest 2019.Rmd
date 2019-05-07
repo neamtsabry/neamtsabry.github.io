@@ -1,0 +1,209 @@
+---
+title: "DataFest 2019"
+author: "Hannah Snell"
+date: "3/29/2019"
+output:
+  pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+require(knitr)
+opts_chunk$set(
+  tidy=TRUE,                    
+  size="small",                   
+  tidy.opts=list(width.cutoff=65), 
+  fig.width=7, fig.height=5          
+  )
+
+require(mosaic)
+require(tidyverse)
+require(magrittr)
+require(ggplot2)
+library(readr)
+library(lubridate)
+
+```
+
+```{r}
+games <- read_csv("games.csv")
+gps <- read_csv("gps.csv")
+wellness <- read_csv("wellness.csv")
+rpe <- read_csv("rpe.csv")
+```
+
+
+### DataFest 2019 
+
+```{r}
+gps_filtered <- gps %>% 
+  select(GameID, PlayerID, GameClock, Speed, AccelLoad) %>% 
+  filter(GameID %in% c(1, 7, 13, 18, 23, 29, 35)) %>% 
+  group_by(GameClock, PlayerID, GameID) %>% 
+  mutate(avgspeed = mean(Speed))
+
+wellness_filtered <- wellness %>% 
+  select(PlayerID, Fatigue, Soreness, SleepQuality, Illness, Menstruation, Date, USG) %>% 
+  mutate(datenum = as.numeric(Date)) %>% 
+  filter(datenum %in% c(17500, 17557, 17634, 17642, 17663, 17690, 17732)) %>% 
+  select(- datenum)
+
+games_filtered <- games %>% 
+  select(Tournament, GameID, Date, Team, Outcome, Date) 
+# %>% 
+#   filter(GameID %in% c(1, 7, 13, 18, 23, 29, 35))
+```
+
+
+## Merge data from mutiple dataframes
+
+```{r}
+working <- merge(gps_filtered, wellness_filtered, "PlayerID")
+workingdata <- working %>% 
+  right_join(games_filtered, by = c("GameID", "Date")) %>% 
+  group_by(PlayerID, GameID) %>% 
+  filter(PlayerID %in% 0:16) %>% 
+  select(- Speed, - AccelLoad, - Team)
+
+```
+
+## Sample Plot 
+
+```{r}
+set.seed(345)
+sample_gps <- gps_filtered %>%
+  ungroup() %>%
+  sample_n(1000)
+
+plot(sample_gps$GameClock, sample_gps$Speed)
+```
+
+## Fitting a test SLR for average speed of player vs. time on Game Clock for the first of each game in each tournament
+
+```{r}
+lm_gps <- lm(avgspeed ~ GameClock, data = single_gps_new)
+ggplot(single_gps_new, aes(x = GameClock, y = avgspeed)) + geom_point() + facet_wrap(~PlayerID) + geom_jitter()
+```
+
+## Player 1 Models 
+
+```{r}
+# EDA for Player 1 
+
+# Avg Speed per Game, Game 13
+
+player1speedgame <- workingdata %>% 
+  filter(GameID %in% 13)
+
+speed_game <- lm(avgspeed ~ GameClock, player1speedgame)
+
+ggplot(player1speedgame, aes(x = GameClock, y = avgspeed, color = Menstruation)) + 
+  geom_point() + 
+  geom_jitter() + 
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~PlayerID)
+
+summary(speed_game)
+```
+
+According to the summary statistics, the slope is significant (p < 0.05). This means that for Player 1 in Game 13, there is an average associated increase of 1.337x10^-3 units of fatigue per second of play. 
+
+# USELESS CODE AND NOTES STARTING FROM HERE 
+
+## Function to find each player's average speed
+
+```{r}
+trying_out <- function(num) {
+  player <- workingdata %>% 
+    filter(PlayerID %in% num)
+  
+  playerspeedgame <- player %>% 
+    filter(GameID %in% 13)
+
+  speed_game <- lm(avgspeed ~ GameClock, playerspeedgame)
+  
+  speed_game %>% filter(!is.na(avgspeed))
+
+  ggplot(playerspeedgame, aes(x = GameClock, y = avgspeed)) + 
+    geom_point() + 
+    geom_jitter() + 
+    geom_smooth(method = "lm", se = FALSE) 
+}
+  
+```
+
+## Players mapping 
+
+```{r}
+list_nums <- c("1", "2", "3", "4")
+map(list_nums, trying_out)
+```
+
+```{r}
+list_nums2 <- c("5", "6", "7", "8")
+map(list_nums2, trying_out)
+```
+
+```{r}
+list_nums3 <- c("9", "10", "11", "12")
+map(list_nums3, trying_out)
+```
+
+
+```{r}
+list_nums4 <- c("13", "14", "15", "16")
+map(list_nums4, trying_out)
+```
+
+## Does menstruation effect USG? No.
+
+```{r}
+ggplot(workingdata, aes(x = GameID, y = Fatigue)) + geom_bar(stat = "identity") + facet_wrap(~PlayerID)
+
+```
+
+USG ranges from 1.002 to 1,0035
+Could have a condition that makes me thirsty quickly or opposite -> requires further testing
+
+game time versus speed and menstruation 
+player id and usg and menstruation 
+
+```{r}
+well <- wellness_filtered %>% 
+  filter(!is.na(USG))
+
+ggplot(well, aes(x = Date, y = USG, color = Menstruation)) +
+  facet_wrap(~PlayerID) +
+  geom_jitter() + 
+  ylim(1, 1.05)
+```
+
+```{r}
+ggplot(wellness, aes(x=MonitoringScore)) +
+  geom_bar()
+
+ggplot(wellness, aes(x=SleepQuality)) +
+  geom_bar()
+
+ggplot(wellness, aes(x=Illness)) +
+  geom_bar()
+
+new_ll <- wellness %>% arrange(desc(TrainingReadiness))
+
+ggplot(new_ll, aes(x=TrainingReadiness)) +
+  geom_bar()
+
+ggplot(wellness, aes(x=MonitoringScore, y=Fatigue)) +
+  geom_point()
+```
+
+******* 
+
+
+
+
+
+
+
+

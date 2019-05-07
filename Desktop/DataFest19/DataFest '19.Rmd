@@ -1,0 +1,160 @@
+---
+title: "DataFest ‘19"
+author: "Hannah Snell"
+date: "3/30/2019"
+output: html_document
+---
+
+```{r}
+library(readr)
+games <- read_csv("games.csv")
+gps <- read_csv("gps.csv")
+wellness <- read_csv("wellness.csv")
+rpe <- read_csv("rpe.csv")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("~/Downloads")
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+require(knitr)
+opts_chunk$set(
+  tidy=TRUE,                    
+  size="small",                   
+  tidy.opts=list(width.cutoff=65), 
+  fig.width=7, fig.height=5          
+  )
+
+require(mosaic)
+require(tidyverse)
+require(magrittr)
+require(ggplot2)
+library(readr)
+library(lubridate)
+# install.packages(sjPlot)
+# install.packages(sjmisc)
+library(sjPlot)
+library(sjmisc)
+
+```
+
+
+
+```{r}
+# Selecting Needed Variables 
+gps_edit <- gps %>% 
+  select(GameID, PlayerID, GameClock, Speed, AccelImpulse) %>% 
+  group_by(GameID, PlayerID)
+
+games_edit <- games %>% 
+  select(GameID, Date, Tournament, Outcome)
+
+wellness_edit <- wellness %>% 
+  select(Date, PlayerID, Menstruation, MonitoringScore) %>% 
+  group_by(PlayerID, Menstruation)
+
+# Merging all the above dataframes 
+newframe <- merge(gps_edit, games_edit, "GameID")
+workingdata <- newframe %>% right_join(wellness_edit, by = c("PlayerID", "Date")) %>%
+  group_by(GameClock, PlayerID, GameID, MonitoringScore) %>%
+  mutate(avgspeed = mean(Speed)) %>%
+  select(-Speed, -AccelImpulse, MonitoringScore) %>%
+  filter(PlayerID %in% 0:16)
+
+working <- workingdata %>%
+  distinct(GameClock, .keep_all = TRUE)
+
+```
+
+
+```{r}
+monitoringlm <- lm(data = working, avgspeed ~ GameClock * MonitoringScore)
+
+ggplot(working, aes(x = GameClock, y = avgspeed, color = Outcome)) + geom_point() + facet_wrap(~GameID)
+
+summary(monitoringlm)
+```
+
+
+```{r}
+player1 <- working %>% 
+  filter(PlayerID %in% 1)
+
+player2 <- working %>% 
+  filter(PlayerID %in% 2)
+
+player3 <- working %>% 
+  filter(PlayerID %in% 3)
+
+player4 <- working %>% 
+  filter(PlayerID %in% 4)
+
+player5 <- working %>% 
+  filter(PlayerID %in% 5)
+
+player7 <- working %>% 
+  filter(PlayerID %in% 7)
+
+player10 <- working %>% 
+  filter(PlayerID %in% 10)
+
+player11 <- working %>% 
+  filter(PlayerID %in% 11)
+
+player13 <- working %>% 
+  filter(PlayerID %in% 13)
+
+player14 <- working %>% 
+  filter(PlayerID %in% 14)
+
+player15 <- working %>% 
+  filter(PlayerID %in% 15)
+
+player16 <- working %>% 
+  filter(PlayerID %in% 16)
+```
+
+
+```{r}
+lmplayer1 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player1)
+summary(lmplayer1)
+
+lmplayer2 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player2)
+summary(lmplayer2)
+
+lmplayer3 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player3)
+summary(lmplayer3)
+
+lmplayer4 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player4)
+summary(lmplayer4)
+
+lmplayer5 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player5)
+summary(lmplayer5)
+
+lmplayer7 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player7)
+summary(lmplayer7)
+
+lmplayer10 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player10)
+summary(lmplayer10)
+
+lmplayer11 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player11)
+summary(lmplayer11)
+
+lmplayer13 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player13)
+summary(lmplayer13)
+
+lmplayer14 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player14)
+summary(lmplayer14)
+
+lmplayer15 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player15)
+summary(lmplayer15)
+
+lmplayer16 <- lm(avgspeed ~ GameClock * MonitoringScore, data = player16)
+summary(lmplayer16)
+```
+
+
+
+
+

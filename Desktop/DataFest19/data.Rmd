@@ -1,0 +1,74 @@
+---
+title: "DataFest"
+author: "Neamat Sabry"
+date: "March 29, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+require(knitr)
+opts_chunk$set(
+  tidy=TRUE,                    
+  size="small",                   
+  tidy.opts=list(width.cutoff=65), 
+  fig.width=7, fig.height=5          
+  )
+
+require(mosaic)
+require(tidyverse)
+require(magrittr)
+require(ggplot2)
+library(readr)
+library(lubridate)
+```
+
+```{r}
+condensed_games <- games %>% select(GameID, Date, Outcome)
+
+condensed_wellness <- wellness %>% select(Date, PlayerID, Menstruation, Fatigue, Desire)
+```
+
+```{r}
+# trying to join the two tables i made 
+# through dates
+
+joined_table <- inner_join(condensed_games, condensed_wellness, by = "Date")
+```
+
+```{r}
+ggplot(joined_table, aes(x = Date, y = Desire, color = Outcome)) +
+  geom_point() + 
+  geom_jitter() +
+  facet_wrap(~PlayerID)
+  # geom_smooth(method = "lm", se = FALSE, color = "black")
+```
+
+```{r}
+first_table <- games %>% 
+  select(Date, Outcome)
+
+second_table <- wellness %>%
+  select(Date, PlayerID, SleepHours) %>%
+  filter(SleepHours < 6, PlayerID == 17)
+
+second_joined_table <- inner_join(first_table, second_table, by = "Date")
+```
+
+
+```{r}
+# so we can measure fatigue by looking at sleep hours
+# less sleep means omre fatigue 
+second_joined_table %>% arrange(PlayerID)
+
+ggplot(second_joined_table, aes(x = PlayerID, y = SleepHours, color = Outcome)) +
+  geom_line()
+```
+
+
+
