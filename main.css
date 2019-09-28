@@ -15,9 +15,9 @@ body {
 	height: 100%;
 	text-align: center;
 	background: #000000;
-	// trying to add an icon instead of a circle
+	/* trying to add an icon instead of a circle */
 	background-image: url("Images/favicon.png"), radial-gradient(#8FC5B9 15%, transparent 10%);
-	// background-image: radial-gradient(#F0C436 15%, transparent 10%), radial-gradient(#8FC5B9 15%, transparent 10%);
+	/* background-image: radial-gradient(#F0C436 15%, transparent 10%), radial-gradient(#8FC5B9 15%, transparent 10%);*/
 	background-size: 40px 40px;
 	background-position: 0 0, 60px 60px;
 	animation-name: backgroundmovement;
