@@ -1,48 +1,48 @@
-var mic;
-var bgImg;
-var y1 = 0;
-var y2 = 0;
-
-var scrolLSpeed = 2;
-
-function preload() {
-    bgImg = loadImage("Images/waltz.png");
-}
+let mic, fft;
+// var bgImg;
 
 function setup() {
-    createCanvas(600, 1200);
+    // create canvas 
+    createCanvas(windowWidth, windowHeight);
+    noFill();
+
+    // start the mic\
     mic = new p5.AudioIn();
     mic.start();
+
+    fft = new p5.FFT();
+    fft.setInput(mic);
 }
 
 function draw() {
     background(0);
+
+    let spectrum = fft.analyze();
+
+    noFill();
+    stroke(255);
+    beginShape();
+    for (i = 0; i < spectrum.length; i++) {
+        vertex(i*2, map(spectrum[i], 0, 255, height, 0));
+    }
+    endShape();
     
+/////////////
+
     var vol = mic.getLevel();
     console.log(vol);
-    
-    image(bgImg, 0, y1, width, height);
-    image(bgImg, 0, y2, width, height);
-    
-    y1 -= vol * 20;
-    y2 -= vol * 20;
 
-    if(y1 < -width){
-        y1 = width
-    }
-    if(y2 < -width){
-        y2 = width;
-    }
-    //   background(0);
-    //   var vol = mic.getLevel();
-    //   ellipse(100, 100, 200, vol * 200);
+    fill(255, 0, 0);
+    stroke(1);
+
+    // Draw an ellipse with size based on volume
+    ellipse(width / 2, height / 2, 50 + vol * 1500, 50 + vol * 1500);
 }
 
-function keyPressed() {
-    if (keyCode === UP_ARROW) {
-      y1--;
-      y2--;
-    } else if (keyCode === DOWN_ARROW) {
-      y1++;
-    }
+
+function touchStarted() {
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
+    console.log("got in!");
   }
+}
