@@ -20,9 +20,9 @@ x.style.animationPlayState = "paused";
 var bot = document.getElementById("bot");
 var res = document.getElementById("res");
 
-bot.addEventListener("click", function () {
+bot.addEventListener("click", function() {
     // $(this).toggleClass('selected');
-  
+
     if (x.style.animationPlayState === "paused") {
         x.style.animationPlayState = "running";
 
@@ -47,3 +47,26 @@ bot.addEventListener("click", function () {
 // function changeColor(){
 
 // }
+
+filterFocus("filter")
+
+function filterFocus(str) {
+    projects = document.getElementsByClassName("filter");
+
+    for (i = 0; i < projects.length; i++) {
+        if (projects[i].classList.contains(str)) projects[i].style.display = "block";
+        else projects[i].style.display = "none";
+    }
+
+    btnGroup = document.getElementsByClassName("btn-group")[0].children;
+
+
+    for (i = 0; i < btnGroup.length; i++) {
+        btnGroup[i].classList.remove("active");
+    }
+
+    btn = document.getElementById(str);
+    console.log(btn)
+        // btn.style.backgroundColor = "#8FC5B9";
+    btn.classList.add("active")
+}
