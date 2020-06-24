@@ -10,7 +10,6 @@ const darkClassName = "far fa-moon fa-2x";
 const lightClassName = "fas fa-sun fa-2x";
 
 if (currentTheme) {
-    console.log(currentTheme)
     document.documentElement.setAttribute('data-theme', currentTheme);
     // lightSwitch.className = lightClassName;
 
@@ -33,3 +32,17 @@ function switchTheme(e) {
 }
 
 lightSwitch.addEventListener("click", switchTheme);
+
+/*
+ * to be finalized
+ */
+
+// const aboutBtn = document.getElementById('aboutBtn');
+// const aboutSection = document.getElementById('about')
+
+// function viewAbout(){
+//     aboutSection.style.display = "block";
+//     $('body').css('background-image', "url('assets/justLights.png') no-repeat center center fixed");
+// }
+
+// aboutBtn.addEventListener('click', viewAbout)
