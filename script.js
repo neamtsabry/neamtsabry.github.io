@@ -20,12 +20,12 @@ if (currentTheme) {
 
 function switchTheme(e) {
     if (e.target.className == lightClassName) {
-        e.target.className = darkClassName;
+        e.target.className = lightClassName;
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
     }
     else {        
-        e.target.className = lightClassName;
+        e.target.className = darkClassName;
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
     }    
