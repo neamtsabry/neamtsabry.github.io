@@ -8,17 +8,17 @@ html {
 }
 
 :root {
-    --header-color: black;
-    --font-color: #424242;
-    --bg-color: #fff;
-    --hover-color: #6ea4c9;
-}
-
-[data-theme="dark"] {
     --header-color: #818cab;
     --font-color: #e1e1ff;
     --bg-color: #161625;
     --hover-color: #f2e650;
+}
+
+[data-theme="light"] {
+    --header-color: black;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --hover-color: #6ea4c9;
 }
 
 html{
@@ -87,27 +87,21 @@ a {
 
 #sections a:hover{
     border-bottom: solid 3px var(--hover-color);
-    /* padding-bottom: 3px; */
     color: var(--hover-color);
 }
 
 /* ABOUT SECTION */
 .about {
-    /* margin: 40% 0 12% 0; */
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* font-size: 15px; */
     display: none;
 }
 
 @media only screen and (max-width: 768px) {
     .about {width: 75%;}
-    /* html{
-        background-size: 300%;
-    } */
 }
 
 #about_text{
